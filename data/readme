@@ -1,8 +1,8 @@
 #The following subreddits have been scraped:
 
-  r/france
-  r/quebec
-  r/francophonie
+  r/france          (so far only ~270 for testing)
+  r/quebec          (in progress)
+  r/francophonie    (in progress)
 
 Each folder contains:
   - 1000 threads from corresponding subreddit

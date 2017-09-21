@@ -1,12 +1,17 @@
-#The following subreddits have been scraped:
+<b>The following subreddits have been scraped:</b>
 
+  r/banalites       (done)
+  r/besoindeparler  (in progress)
+  r/forumlibre      (done)
   r/france          (done)
-  r/quebec          (done)
   r/francophonie    (done)
-  r/le_Pen
-  r/paris
-  r/psg
+  r/geographie      (done)
+  r/jeuxvideo       (done)
+  r/le_pen          (done)
+  r/philosophie     (done)
+  r/quebec          (done)
+  r/rance           (done)
 
 Each folder contains:
-  - 1000 threads from corresponding subreddit
+  - ~1000 threads from corresponding subreddit
   - all comments from each thread (JSON)

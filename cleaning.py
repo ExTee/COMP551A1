@@ -17,17 +17,26 @@ for line in data:
     # We got something, save it
     else:
         #getting rid of weird characters
-        line = re.sub('[\[\]_*]','', line);
+        line = re.sub('[\[\]_*~]','', line);
+        line = re.sub('\n', '',line);
+
+        #deleting removed posts
+        line = re.sub('<utt.*removed.*<\/utt>', '', line);
         #deleting urls
         line = re.sub('\(http.*\)', '',line);
+        line = re.sub('(https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*))', '', line);
+
         #gt,lt etc.
         line = re.sub('#*&.*;', '',line);
         #"ce sujet genere par .."
         line = re.sub('\^\(.*\) \^\w*.', '',line);
-        
-#        line = re.sub('#*&.*;', '',line);
+        line = re.sub('\^\(.*\)*\^', '', line);
 
-#       line = re.sub('#*&.*;', '',line);
+        #skip a like whenever theres a new <s>
+        line = re.sub('<s>', '\n<s>',line);
+        #skip a line whenever there's a new utt
+        line = re.sub('<utt', '\n\t<utt',line);
+
         new_data.append(line)
 
 #write to file

@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import re
 
 
@@ -23,8 +25,11 @@ for line in data:
         #deleting removed posts
         line = re.sub('<utt.*removed.*<\/utt>', '', line);
         #deleting urls
+            #huge regex to grab urls
+        reg = r"(?i)\b((?:[a-z][\w-]+:(?:/{1,3}|[a-z0-9%])|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'\".,<>?«»“”‘’]))"
+            #redundancy needed here to preserve url subject for certain subreddits
         line = re.sub('\(http.*\)', '',line);
-        line = re.sub('(https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*))', '', line);
+        line = re.sub(reg, '', line);
 
         #gt,lt etc.
         line = re.sub('#*&.*;', '',line);

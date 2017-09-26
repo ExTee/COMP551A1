@@ -29,7 +29,7 @@ for line in data:
         reg = r"(?i)\b((?:[a-z][\w-]+:(?:/{1,3}|[a-z0-9%])|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'\".,<>?«»“”‘’]))"
             #redundancy needed here to preserve url subject for certain subreddits
         line = re.sub('\(http.*\)', '',line);
-        line = re.sub(reg, '', line);
+        line = re.sub(reg, '[[url]]', line);
 
         #gt,lt etc.
         line = re.sub('#*&.*;', '',line);

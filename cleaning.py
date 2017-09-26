@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 
 import re
 
@@ -19,8 +19,11 @@ for line in data:
     # We got something, save it
     else:
         #getting rid of weird characters
-        line = re.sub('[\[\]_*~]','', line);
+        line = re.sub('[\[\]_*~\|]','', line);
         line = re.sub('\n', '',line);
+	line = re.sub('-{2,}','',line);
+	#spacing after % sign
+	line = re.sub('% *','% ',line);
 
         #deleting removed posts
         line = re.sub('<utt.*removed.*<\/utt>', '', line);
@@ -41,6 +44,7 @@ for line in data:
         line = re.sub('<s>', '\n<s>',line);
         #skip a line whenever there's a new utt
         line = re.sub('<utt', '\n\t<utt',line);
+
 
         new_data.append(line)
 

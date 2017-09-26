@@ -4,6 +4,7 @@ import json
 from json2assignment import convert, etree2xml
 import xml.etree.ElementTree as etree
 import traceback
+import itertools
 
 
 def get_convos_files(dir):
@@ -33,6 +34,14 @@ for convo in convos:
         continue
     if not convo.getchildren()[0].text:
         continue
+    # Normalize the conversation uids
+    uids = {}
+    count = itertools.count(start=1)
+    for utt in convo.getchildren():
+        if utt.attrib["uid"] not in uids:
+            uids[utt.attrib["uid"]] = str(next(count))
+        utt.attrib["uid"] = uids[utt.attrib["uid"]]
+        # utt.text = utt.text.replace("\n", "")
     root.append(convo)
 print("Created xml file %s with %d entries." % (sys.argv[2],
                                                 len(root.getchildren())))

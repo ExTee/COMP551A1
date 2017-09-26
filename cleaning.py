@@ -17,8 +17,17 @@ for line in data:
     # We got something, save it
     else:
         #getting rid of weird characters
-        line = re.sub('[_*]','', line);
+        line = re.sub('[\[\]_*]','', line);
+        #deleting urls
         line = re.sub('\(http.*\)', '',line);
+        #gt,lt etc.
+        line = re.sub('#*&.*;', '',line);
+        #"ce sujet genere par .."
+        line = re.sub('\^\(.*\) \^\w*.', '',line);
+        
+#        line = re.sub('#*&.*;', '',line);
+
+#       line = re.sub('#*&.*;', '',line);
         new_data.append(line)
 
 #write to file

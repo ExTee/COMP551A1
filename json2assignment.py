@@ -38,6 +38,7 @@ def convert(filename):
     uids = {}
     root = etree.Element("s")
     utt = etree.Element("utt")
+    root.attrib["thread"] = filename
     utt.attrib["uid"] = "1"
     utt.text = data["selftext"]
     uids[data["author"]] = next(count_iter)

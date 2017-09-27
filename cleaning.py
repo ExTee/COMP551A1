@@ -52,7 +52,7 @@ for line in data:
 
 file_out.writelines(new_data);
 
-# Print file sans empty lines 
+# Print file sans empty lines
 print "done";
 
 

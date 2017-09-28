@@ -4,7 +4,7 @@ import re
 
 
 file_in = open("test.xml", "rb")
-file_out = open("test_cleaned.xml", "wb")
+file_out = open("French_Reddit_corpus.xml", "wb")
 
 
 data = file_in.readlines();
